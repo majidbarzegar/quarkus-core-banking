@@ -44,10 +44,16 @@ public class CustomerResource {
     }
 
     @GET
-    public ResponseDto<CustomerDto> lookup(@QueryParam("accountNumber") String accountNumber) {
+    @Path("/by-account/{accountNumber}")
+    public ResponseDto<CustomerDto> lookupByAccount(@PathParam("accountNumber") String accountNumber) {
         Customer customer = customerService.findByAccountNumber(accountNumber);
-        return new ResponseDto<>(
-                customerMapper.toDto(customer)
-        );
+        return new ResponseDto<>(customerMapper.toDto(customer));
+    }
+
+    @GET
+    @Path("/by-national-code/{nationalCode}")
+    public ResponseDto<CustomerDto> lookupByNationalCode(@PathParam("nationalCode") String nationalCode) {
+        Customer customer = customerService.findByNationalCode(nationalCode);
+        return new ResponseDto<>(customerMapper.toDto(customer));
     }
 }
