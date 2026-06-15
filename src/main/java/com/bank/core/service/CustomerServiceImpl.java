@@ -8,6 +8,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
+import java.util.Optional;
+
 @ApplicationScoped
 public class CustomerServiceImpl implements CustomerService {
 
@@ -38,5 +40,23 @@ public class CustomerServiceImpl implements CustomerService {
             throw new BusinessException(Message.CUSTOMER_NOT_FOUND);
         }
         return customer;
+    }
+
+    @Override
+    public Customer findByNationalCode(String nationalCode) {
+        Optional<Customer> customer = customerRepository.findByNationalCode(nationalCode);
+        if(customer.isEmpty()){
+            throw new BusinessException(Message.CUSTOMER_NOT_FOUND);
+        }
+        return customer.get();
+    }
+
+    @Override
+    public Customer findByAccountNumber(String accountNumber) {
+        Optional<Customer> customer = customerRepository.findByAccountNumber(accountNumber);
+        if(customer.isEmpty()){
+            throw new BusinessException(Message.ACCOUNT_NUMBER_NOT_FOUND);
+        }
+        return customer.get();
     }
 }

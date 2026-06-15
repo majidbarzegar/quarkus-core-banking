@@ -3,7 +3,10 @@ package com.bank.core.exception;
 public enum Message implements ExceptionMessage {
     DEFAULT_EXCEPTION(1001),
     CUSTOMER_NOT_FOUND(1002),
-    EMPTY_HISTORY(1003),
+    ACCOUNT_NUMBER_NOT_FOUND(1003),
+    EMPTY_HISTORY(1004),
+    INSUFFICIENT_BALANCE(1005),
+    INVALID_TRANSFER_AMOUNT(1006),
     ;
 
     private final Integer code;

@@ -8,4 +8,8 @@ public interface CustomerService {
     void delete(Long id);
 
     Customer findById(Long id);
+
+    Customer findByNationalCode(String nationalCode);
+
+    Customer findByAccountNumber(String accountNumber);
 }
