@@ -27,7 +27,7 @@ public class TransferResource {
         );
     }
 
-    @POST
+    @GET
     @Path("/history")
     public ResponseDto<List<TransferInfoDto>> history(@HeaderParam("X-National-Code") String currentUserNationalCode) {
         return new ResponseDto<>(
